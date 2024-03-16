@@ -41,7 +41,9 @@ app.get('/search/:searchKey', function (req, res) {
             return { status: 400, response: error }
         })
 
-    return superHeroes
+    return res
+        .status(superHeroes.status)
+        .json({ status: superHeroes.status, data: superHeroes.response })
 })
 
 app.get('/search/:searchKey/*', function (req, res) {
