@@ -1,5 +1,19 @@
 {
   "api": {
+    "apisuperhero": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "fetchSuperheroTest"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "mysuperhero": {
       "dependsOn": [],
       "output": {
@@ -20,6 +34,31 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
+    }
+  },
+  "function": {
+    "fetchSuperheroTest": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_fetchSuperheroTest_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fetchSuperheroTest"
+        }
+      ]
+    },
+    "AMPLIFY_function_fetchSuperheroTest_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fetchSuperheroTest"
+        }
+      ]
     }
   }
 }
