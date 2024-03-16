@@ -13,9 +13,8 @@ export default function SearchSuperHero(props) {
         }
         if (textVal.length >= 3) {
             const url =
-                'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/'
-            console.log('url', url)
-            console.log(headers)
+                'https://z8wp2qq7q8.execute-api.us-east-2.amazonaws.com/staging/search/' +
+                textVal
             axios.get(url, headers).then((response) => {
                 // response.json()
                 console.log('here>> ', response.data)
