@@ -28,8 +28,10 @@ app.use(function (req, res, next) {
 
 app.get('/search/:searchKey', function (req, res) {
     // Add your code here
+
     var url =
-        'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/'
+        'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/' +
+        req.params.searchKey
     var superHeroes = fetch(url)
         .then((response) => response.json())
         .then((data) => {
@@ -44,19 +46,7 @@ app.get('/search/:searchKey', function (req, res) {
 
 app.get('/search/:searchKey/*', function (req, res) {
     // Add your code here
-    var url =
-        'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/'
-    var superHeroes = fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-            return { status: 200, response: data }
-        })
-        .catch((error) => {
-            return { status: 400, response: error }
-        })
-
-    return superHeroes
-    // res.json({ success: 'get call succeed!', url: req.url })
+    res.json({ success: 'get call succeed!', url: req.url })
 })
 
 /****************************
