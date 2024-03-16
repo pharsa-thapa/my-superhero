@@ -8,17 +8,18 @@ export default function SearchSuperHero(props) {
         console.log('Event >>', event.target.value)
         var textVal = event.target.value
         const headers = {
-            'Access-Control-Allow-Origin': '•',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'localhost',
         }
         if (textVal.length >= 3) {
             const url =
-                'https://superheroapi.com/api/' +
-                '7541687979216866' +
-                '/search/' +
-                textVal
-            const response = axios.get(url, headers)
-            const data = await response.json()
-            console.log('here>> ', data)
+                'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/'
+            console.log('url', url)
+            console.log(headers)
+            axios.get(url, headers).then((response) => {
+                // response.json()
+                console.log('here>> ', response.data)
+            })
         }
     }
     console.log(props)
