@@ -32,18 +32,14 @@ app.get('/search/:searchKey', function (req, res) {
     var url =
         'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/' +
         req.params.searchKey
-    var superHeroes = fetch(url)
+    fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            return { status: 200, response: data }
+            res.status(200).json({ status: 200, response: data })
         })
         .catch((error) => {
-            return { status: 400, response: error }
+            res.status(400).json({ status: 400, response: error })
         })
-
-    return res
-        .status(superHeroes.status)
-        .json({ status: superHeroes.status, data: superHeroes.response })
 })
 
 app.get('/search/:searchKey/*', function (req, res) {

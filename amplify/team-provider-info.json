@@ -19,7 +19,7 @@
       "function": {
         "fetchSuperheroTest": {
           "deploymentBucketName": "amplify-amplifyabbe27cfce714-staging-25052-deployment",
-          "s3Key": "amplify-builds/fetchSuperheroTest-694644795171734a5355-build.zip"
+          "s3Key": "amplify-builds/fetchSuperheroTest-4e615373574b365a5147-build.zip"
         }
       }
     }
