@@ -1,0 +1,13 @@
+type Superhero @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  image: String
+  stats: String
+  userID: ID! @index(name: "byUser")
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  username: String!
+  Users_Superheroes: [Superhero] @hasMany(indexName: "byUser", fields: ["id"])
+} 
