@@ -106,20 +106,26 @@ export default function MySuperHeroList(props) {
                                 ))}
                             </Card>
                         ) : (
-                            <Card width="75%">
-                                <Flex alignItems="flex-start">
-                                    <Flex direction="row">
-                                        <Label fontSize="2em">
-                                            <CiCircleAlert color="red" />
-                                        </Label>
+                            <Flex
+                                direction="column"
+                                gap="medium"
+                                width="100%"
+                                border="thin"
+                            >
+                                <Card width="75%">
+                                    <Flex alignItems="flex-start">
+                                        <Flex direction="row">
+                                            <Label fontSize="1.5em" color="red">
+                                                <CiCircleAlert
+                                                    color="red"
+                                                    fontSize="1.6em"
+                                                />{' '}
+                                                &nbsp; No Saved Super Heroes{' '}
+                                            </Label>
+                                        </Flex>
                                     </Flex>
-                                    <Flex direction="row">
-                                        <Label fontSize="1.5em" color="red">
-                                            Super Heroes Found{' '}
-                                        </Label>
-                                    </Flex>
-                                </Flex>
-                            </Card>
+                                </Card>
+                            </Flex>
                         )}
                     </Flex>
                 ) : (
