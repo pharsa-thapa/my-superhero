@@ -30,7 +30,7 @@ app.get('/search/:searchKey', function (req, res) {
     // Add your code here
 
     var url =
-        'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws/' +
+        'https://tnx4qwi6hy55gxlfwvo5hydc4i0jlcqm.lambda-url.us-east-2.on.aws?search=' +
         req.params.searchKey
     fetch(url)
         .then((response) => response.json())
