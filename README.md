@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# MySuperHero
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction 
+MySuperHero is a web application that allows user to search for favourite super hero character, view power stats and save into the system. Later this saved super hero power stats can also be updated and saved.
 
-## Available Scripts
+## How to access the app?
+You can easily access the app [MySuperHero](https://master.d172znlri2cnll.amplifyapp.com). If you are not able to click on the lin Copy and use the URL - https://master.d172znlri2cnll.amplifyapp.com.
 
-In the project directory, you can run:
+## How to use MySuperHero
+Once you land on the home page, you will see header with logo and salutation (on top), search field (on left side) and a main page (at middle of the page)
 
-### `npm start`
+### My Saved Super Heroes Page
+The middle of the page is the section where your saved superheroes will be listed. If there are not any records saved you will see a message "No Saved Super Heroes". Once you start saving super heroes record, they will be listed here along with the image. Each record are given provision to Edit Power Stats.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Search Super Hero
+Start typing your favourite super hero in the search field, You will see a list of matching superheroes below the search field.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### View Your Super Hero
+On the matching list, each of the item has a View button with an icon which will trigger the page to view details of the clicked super hero along with the image.
 
-### `npm test`
+### Saving your Super Hero
+On the View dialog, there is a Save button below which will save the deails of the viwed superhero for future. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Editing Power Stats
+Once you click on the Edit Power Stats button in your saved item, you will see a dialog box which allows to adjust your new value for each item of the power stats. Once you are done with adjustments, simply click on Save button. This will update the power stats of the selected super hero immediately.
 
-### `npm run build`
+## Used Stack
+1. React  with amplify/react-ui and bootstrap
+2. Node js
+3. Lambda Functions
+4. AWS Amplify
+5. App Sync
+6. Dynamo DB
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Package Versions
+1. Node Version 16.13 +
+2. React Version 18.2.0
+3. NPM version 8.19.2
+4. Amplify CLI Version 12.10.1
+5. Git Version 2.40.0
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Assumptions
+### Feature Scope
+1. User means end user
+2. No Authentication or User based data saving feature
+3. Edit means Only the Power Stats Update Feature
+4. View means Viewing Details from superheros API
+5. View later means Viewing data that has been saved into Dynamo DB after being copied from superheroes API
