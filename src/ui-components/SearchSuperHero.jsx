@@ -2,6 +2,8 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { FaLine, FaPlus } from 'react-icons/fa6'
+import { GrView } from 'react-icons/gr'
+import { Modal } from 'react-bootstrap'
 
 import {
     Card,
@@ -10,6 +12,9 @@ import {
     TextField,
     Button,
     Grid,
+    Label,
+    Badge,
+    Image,
     View,
 } from '@aws-amplify/ui-react'
 import axios from 'axios'
@@ -18,11 +23,16 @@ import { generateClient } from 'aws-amplify/api'
 import * as mutations from '../graphql/mutations'
 const client = generateClient()
 
+import { PowerStats } from './index'
+
 export default function SearchSuperHero(props) {
     const [foundSuperHeroes, setFoundSuperHeroes] = useState([])
+    var [showModal, setShowModal] = useState(false)
+    var [viewingSuperHero, setViewingSuperHero] = useState(null)
+
     useEffect(() => {
         handleKeyUp
-    }, [])
+    }, [setShowModal])
 
     const handleKeyUp = async (searchKey) => {
         const headers = {
@@ -34,6 +44,7 @@ export default function SearchSuperHero(props) {
                 'https://z8wp2qq7q8.execute-api.us-east-2.amazonaws.com/staging/search/' +
                 searchKey
             axios.get(url, headers).then((response) => {
+                //filter before setting up
                 setFoundSuperHeroes(response.data?.response?.response.results)
             })
         } else {
@@ -61,6 +72,18 @@ export default function SearchSuperHero(props) {
         })
         props.reloadAction(true)
         setFoundSuperHeroes([])
+        setViewingSuperHero(null)
+        toggleModal(false)
+    }
+
+    const viewSuperHero = (superHero) => {
+        console.log('Now viewing superHero', superHero)
+        setViewingSuperHero(superHero)
+        toggleModal(true)
+    }
+
+    const toggleModal = (flag) => {
+        setShowModal(flag)
     }
 
     return (
@@ -91,15 +114,13 @@ export default function SearchSuperHero(props) {
                                     <Flex justifyContent="flex-end">
                                         <Button
                                             variation="success"
-                                            title={'Add ' + superHero.name}
+                                            title={'View ' + superHero.name}
                                             onClick={() => {
-                                                saveToMyList(superHero.id)
+                                                viewSuperHero(superHero)
                                             }}
                                             key={superHero.id}
-                                            backgroundColor="green"
-                                            color="white"
                                         >
-                                            <FaPlus />
+                                            <GrView />
                                         </Button>
                                     </Flex>
                                 </Grid>
@@ -110,6 +131,112 @@ export default function SearchSuperHero(props) {
                     ''
                 )}
             </Card>
+            {showModal && (
+                <Card width="80%" backgroundColor="green">
+                    <Flex alignItems="flex-start">
+                        <Flex alignContent="flex-end">
+                            <Modal
+                                show={showModal}
+                                size="md"
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                            >
+                                <Modal.Header>
+                                    <Modal.Title id="contained-modal-title-vcenter">
+                                        <Card>
+                                            <Text fontWeight="semibold">
+                                                {viewingSuperHero.name}
+                                            </Text>
+                                        </Card>
+                                    </Modal.Title>
+                                </Modal.Header>
+
+                                <Modal.Body>
+                                    <Flex alignItems="flex-start">
+                                        <Image
+                                            src={viewingSuperHero.image.url}
+                                            alt={viewingSuperHero.name}
+                                            width="10em"
+                                        />
+                                        <Flex direction="column">
+                                            <View
+                                                textTransform="capitalize"
+                                                fontSize="1.4em"
+                                                fontWeight="bold"
+                                            >
+                                                Power Stats
+                                            </View>
+                                            <Card
+                                                width="30%"
+                                                border="thin"
+                                                padding="0.5em"
+                                                textAlign="center"
+                                            >
+                                                <Flex alignItems="flex-start">
+                                                    <Flex
+                                                        direction="column"
+                                                        gap="medium"
+                                                        width="100%"
+                                                    >
+                                                        {Object.keys(
+                                                            viewingSuperHero.powerstats
+                                                        ).map((key) => (
+                                                            <Label>
+                                                                <Text
+                                                                    textTransform="capitalize"
+                                                                    fontWeight={
+                                                                        'bold'
+                                                                    }
+                                                                >
+                                                                    {' '}
+                                                                    {key}
+                                                                </Text>
+                                                                <Text>
+                                                                    {
+                                                                        viewingSuperHero
+                                                                            .powerstats[
+                                                                            key
+                                                                        ]
+                                                                    }
+                                                                </Text>
+                                                            </Label>
+                                                        ))}
+                                                    </Flex>
+                                                </Flex>
+                                            </Card>
+
+                                            <Text
+                                                fontSize="large"
+                                                color="secondary"
+                                            >
+                                                {}
+                                            </Text>
+                                        </Flex>
+                                    </Flex>
+                                </Modal.Body>
+
+                                <Modal.Footer>
+                                    <Button
+                                        className="btn btn-danger"
+                                        onClick={() => toggleModal(false)}
+                                    >
+                                        Close
+                                    </Button>
+                                    <Button
+                                        type="submit"
+                                        className="btn btn-success"
+                                        onClick={() => {
+                                            saveToMyList(viewingSuperHero.id)
+                                        }}
+                                    >
+                                        &nbsp; Save
+                                    </Button>
+                                </Modal.Footer>
+                            </Modal>
+                        </Flex>
+                    </Flex>
+                </Card>
+            )}
         </Flex>
     )
 }

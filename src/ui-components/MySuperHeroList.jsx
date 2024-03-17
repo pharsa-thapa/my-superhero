@@ -115,7 +115,7 @@ export default function MySuperHeroList(props) {
                                     </Flex>
                                     <Flex direction="row">
                                         <Label fontSize="1.5em" color="red">
-                                            No Super Heroes Found{' '}
+                                            Super Heroes Found{' '}
                                         </Label>
                                     </Flex>
                                 </Flex>
