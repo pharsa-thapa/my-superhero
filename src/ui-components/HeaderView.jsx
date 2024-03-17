@@ -5,7 +5,7 @@ import { View, Text, Flex, Badge, Button, Image } from '@aws-amplify/ui-react'
 
 export default function HeaderView(props) {
     console.log(props)
-    const username = 'Pharsa'
+    const username = 'User'
     return (
         <View
             flex="inherit"
