@@ -4,7 +4,7 @@
 MySuperHero is a web application that allows user to search for favourite super hero character, view power stats and save into the system. Later this saved super hero power stats can also be updated and saved.
 
 ## How to access the app?
-You can easily access the app [MySuperHero](https://master.d172znlri2cnll.amplifyapp.com). If you are not able to click on the lin Copy and use the URL - https://master.d172znlri2cnll.amplifyapp.com.
+You can easily access the app [MySuperHero](https://master.d172znlri2cnll.amplifyapp.com). If you are not able to click on the lin Copy and use the URL - https://master.d172znlri2cnll.amplifyapp.com. Code base is also publicly available to access at [MySuperHero Githuh](https://github.com/pharsa-thapa/my-superhero).
 
 ## How to use MySuperHero
 Once you land on the home page, you will see header with logo and salutation (on top), search field (on left side) and a main page (at middle of the page)
